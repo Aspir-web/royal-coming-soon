@@ -1,39 +1,51 @@
 import React from 'react';
 import { Wine, Award, Shield, ChevronDown } from 'lucide-react';
 
-
 import legacy from '../assets/legacy.jpg'
 import night from '../assets/Night2.jpg'
 import imperialUltra1 from '../assets/imperialUltra1.png'
 import queen from '../assets/queen1.png'
+import { useNavigate } from 'react-router';
 
 const LiquorHomepage = () => {
-  // const products = [
-  //   {
-  //     name: "Reserve Whiskey",
-  //     description: "Aged 12 years in oak barrels for a smooth, refined taste",
-  //     image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=400&h=600&fit=crop",
-  //     badge: "Premium"
-  //   },
-  //   {
-  //     name: "Platinum Vodka",
-  //     description: "Crystal clear, distilled five times for ultimate purity",
-  //     image: "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=400&h=600&fit=crop",
-  //     badge: "Top Rated"
-  //   },
-  //   {
-  //     name: "Gold Rum",
-  //     description: "Caribbean blend with notes of vanilla and caramel",
-  //     image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=600&fit=crop",
-  //     badge: "Limited"
-  //   },
-  //   {
-  //     name: "Heritage Gin",
-  //     description: "Botanical infusion with juniper and citrus notes",
-  //     image: "https://images.unsplash.com/photo-1581006706150-a8a7686aa792?w=400&h=600&fit=crop",
-  //     badge: "Craft"
-  //   }
-  // ];
+  const navigate = useNavigate()
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
+  const heroSlides = [
+    {
+      image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1920&h=1080&fit=crop",
+      title: "Where Tradition Meets Excellence",
+      subtitle: "Crafting the finest spirits since 2018"
+    },
+    {
+      image: night,
+      title: "Night Hub Scotch Whisky",
+      subtitle: "When Nights Deserve a Legacy"
+    },
+    {
+      image: legacy,
+      title: "Royal Legacy Single Malt",
+      subtitle: "One Malt. A Thousand Stories"
+    },
+    {
+      image: imperialUltra1,
+      title: "Imperial Ultra Whisky",
+      subtitle: "Raise the Bar. Every Time"
+    },
+    {
+      image: queen,
+      title: "Queen Special Scotch",
+      subtitle: "The Elegance of Power"
+    }
+  ];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const products = [
     {
       id: 1,
@@ -72,42 +84,194 @@ const LiquorHomepage = () => {
       color: "from-rose-800 to-rose-950"
     }
   ];
+
   return (
     <div className="bg-[#951049] min-h-screen">
-      {/* Hero Banner Section */}
+      {/* Hero Slider Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1920&h=1080&fit=crop"
-            alt="Hero Banner"
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#951049]/80 via-[#951049]/60 to-[#951049]"></div>
-        </div>
+        {/* Slider Images */}
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img 
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#951049]/70 via-[#951049]/50 to-[#951049]"></div>
+          </div>
+        ))}
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          {/* <div className="mb-8">
+          <div className="mb-8">
             <Wine className="w-20 h-20 mx-auto text-[#FFD700] mb-6" />
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-[#FFD700] mb-6 tracking-wider uppercase">
-            Royal
-          </h1> */}
-          <p className="text-3xl md:text-4xl text-white mb-8 font-serif italic">
-            Where Tradition Meets Excellence
+          <p className="text-3xl md:text-5xl text-white mb-8 font-serif italic">
+            {heroSlides[currentSlide].title}
           </p>
-          <p className="text-lg text-gray-200 mb-12 max-w-2xl mx-auto">
-            Crafting the finest spirits. Each bottle tells a story of passion, precision, and timeless quality.
+          <p className="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl mx-auto">
+            {heroSlides[currentSlide].subtitle}
           </p>
-          <button className="bg-[#FFD700] text-[#951049] px-10 py-4 rounded-full font-bold text-lg uppercase tracking-wide hover:bg-[#FFC700] transition-all transform hover:scale-105">
+          {/* <button className="bg-[#FFD700] text-[#951049] px-10 py-4 rounded-full font-bold text-lg uppercase tracking-wide hover:bg-[#FFC700] transition-all transform hover:scale-105">
             Explore Collection
-          </button>
+          </button> */}
+        </div>
+
+        {/* Slider Indicators */}
+        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === currentSlide ? 'bg-[#FFD700] w-8' : 'bg-white/50'
+              }`}
+            />
+          ))}
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <ChevronDown className="w-8 h-8 text-[#FFD700]" />
+        </div>
+      </section>
+
+      {/* About Us Section - Creative Timeline */}
+      <section className="py-20 px-6 bg-gradient-to-b from-[#7a0d3b] to-[#951049] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-1/4 w-64 h-64 bg-[#FFD700] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#FFD700] rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold text-[#FFD700] mb-4 uppercase tracking-wider">
+              Our Legacy
+            </h2>
+            <div className="w-24 h-1 bg-[#FFD700] mx-auto mb-6"></div>
+            <p className="text-2xl md:text-3xl text-white font-serif italic mb-4">
+              Crafting Spirits. Building Legacies. Inspiring Celebrations.
+            </p>
+          </div>
+
+          {/* Story Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Left: Story */}
+            <div className="space-y-6">
+              <div className="bg-[#6b0d37]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#FFD700]/20">
+                <h3 className="text-3xl font-bold text-[#FFD700] mb-4">The Beginning</h3>
+                <p className="text-gray-200 leading-relaxed text-lg">
+                  Established in <span className="text-[#FFD700] font-bold">2018</span> and coming into full-scale operations in <span className="text-[#FFD700] font-bold">2021</span>, Royal Supreme Distillery & Beverage Company has quickly emerged as one of the fastest-growing names in India's premium alcoholic beverage industry.
+                </p>
+              </div>
+
+              <div className="bg-[#6b0d37]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#FFD700]/20">
+                <h3 className="text-3xl font-bold text-[#FFD700] mb-4">The Visionaries</h3>
+                <p className="text-gray-200 leading-relaxed text-lg mb-4">
+                  Founded by visionary entrepreneur <span className="text-[#FFD700] font-bold">Mr. Amit Kumar</span>, whose leadership and passion for quality have been the cornerstone of our success. Today, he is joined by <span className="text-[#FFD700] font-bold">Mr. Shubham Kumar</span>, who brings fresh energy and strategic innovation to carry the legacy forward.
+                </p>
+              </div>
+
+              <div className="bg-[#6b0d37]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#FFD700]/20">
+                <h3 className="text-3xl font-bold text-[#FFD700] mb-4">Our Philosophy</h3>
+                <p className="text-gray-200 leading-relaxed text-lg">
+                  At Royal Supreme, we believe every bottle tells a story. Each product is crafted to perfection, blended with tradition, and refined with modern innovation. We stand for consistency, authenticity, and a promise of unparalleled taste.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: Stats & Highlights */}
+            <div className="space-y-6">
+              {/* Map/Presence Card */}
+              <div className="bg-gradient-to-br from-[#FFD700] to-[#FFA500] p-8 rounded-2xl text-[#951049] shadow-2xl">
+                <h3 className="text-3xl font-bold mb-6">Our Presence</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-semibold">Current Operations</span>
+                    <span className="text-4xl font-bold">4</span>
+                  </div>
+                  <div className="text-sm">
+                    <p className="font-bold mb-2">States:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {['Uttarakhand', 'Uttar Pradesh', 'Punjab', 'Haryana'].map((state) => (
+                        <span key={state} className="bg-[#951049] text-[#FFD700] px-3 py-1 rounded-full text-xs font-bold">
+                          {state}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="pt-4 border-t-2 border-[#951049]/30">
+                    <p className="font-bold text-sm">Expanding to:</p>
+                    <span className="inline-block mt-2 bg-[#951049] text-[#FFD700] px-4 py-2 rounded-full font-bold">
+                      Rajasthan - Coming Soon
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Headquarters */}
+              <div className="bg-[#6b0d37]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#FFD700]/20">
+                <div className="flex items-start gap-4">
+                  <Shield className="w-12 h-12 text-[#FFD700] flex-shrink-0" />
+                  <div>
+                    <h4 className="text-xl font-bold text-[#FFD700] mb-2">Headquarters</h4>
+                    <p className="text-gray-200 text-lg">Dehradun, Uttarakhand</p>
+                    <p className="text-gray-400 text-sm mt-2">Where tradition meets innovation</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product Range Highlight */}
+              <div className="bg-[#6b0d37]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#FFD700]/20">
+                <div className="flex items-start gap-4">
+                  <Wine className="w-12 h-12 text-[#FFD700] flex-shrink-0" />
+                  <div>
+                    <h4 className="text-xl font-bold text-[#FFD700] mb-2">Product Portfolio</h4>
+                    <p className="text-gray-200">Whisky • Rum • Vodka • Beer</p>
+                    <p className="text-gray-400 text-sm mt-2">Every product crafted to crown moments</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Why Choose Us - Cards */}
+          <div className="mt-20">
+            <h3 className="text-4xl font-bold text-center text-[#FFD700] mb-12 uppercase">
+              Why Royal Supreme?
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {[
+                { icon: Award, title: "Trusted Vision", desc: "Founded by seasoned entrepreneurs" },
+                { icon: Shield, title: "Premium Quality", desc: "State-of-the-art manufacturing" },
+                { icon: Wine, title: "Diverse Range", desc: "Catering to every palate" },
+                { icon: Award, title: "Strong Presence", desc: "Across North India" },
+                { icon: Shield, title: "Luxury Brand", desc: "Symbolizing celebration" }
+              ].map((item, index) => (
+                <div key={index} className="bg-[#6b0d37]/40 backdrop-blur-sm p-6 rounded-xl border border-[#FFD700]/20 text-center hover:bg-[#6b0d37]/60 transition-all transform hover:scale-105">
+                  <item.icon className="w-12 h-12 text-[#FFD700] mx-auto mb-4" />
+                  <h4 className="text-lg font-bold text-[#FFD700] mb-2">{item.title}</h4>
+                  <p className="text-gray-300 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Closing Statement */}
+          <div className="mt-20 text-center">
+            <div className="max-w-3xl mx-auto bg-gradient-to-r from-[#FFD700] to-[#FFA500] p-12 rounded-3xl">
+              <p className="text-2xl md:text-3xl font-bold text-[#951049] italic">
+                "Royal Supreme isn't just about creating beverages — it's about creating experiences. Every pour is a promise, every sip a celebration."
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -130,13 +294,9 @@ const LiquorHomepage = () => {
             {products.map((product, index) => (
               <div 
                 key={index}
-                className="group relative bg-[#6b0d37] rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-[#FFD700]/20"
+                className="group relative bg-[#6b0d37] cursor-pointer rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-[#FFD700]/20"
+                onClick={() => window.location.href = '/products'}
               >
-                {/* Badge */}
-                <div className="absolute top-4 right-4 z-10 bg-[#FFD700] text-[#951049] px-3 py-1 rounded-full text-xs font-bold uppercase">
-                  {product.badge}
-                </div>
-
                 {/* Product Image */}
                 <div className="h-80 overflow-hidden">
                   <img 
