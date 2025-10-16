@@ -4,7 +4,7 @@ import { Wine, Award, Shield, ChevronDown } from 'lucide-react';
 import legacy from '../assets/legacy.jpg'
 import night from '../assets/Night2.jpg'
 import imperialUltra1 from '../assets/imperialUltra1.png'
-import imperialUltra from '../assets/imperial Ultra.jpg'
+import imperialUltra from '../assets/imperialUltra.jpg'
 import queen from '../assets/queen1.png'
 import beer from '../assets/beer.png'
 import { useNavigate } from 'react-router';
