@@ -7,10 +7,8 @@ import imperialUltra1 from '../assets/imperialUltra1.png'
 import imperialUltra from '../assets/imperialUltra.jpg'
 import queen from '../assets/queen1.png'
 import beer from '../assets/beer.png'
-import { useNavigate } from 'react-router';
 
 const LiquorHomepage = () => {
-  const navigate = useNavigate()
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
   const heroSlides = [
