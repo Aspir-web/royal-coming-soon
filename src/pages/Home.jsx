@@ -4,7 +4,9 @@ import { Wine, Award, Shield, ChevronDown } from 'lucide-react';
 import legacy from '../assets/legacy.jpg'
 import night from '../assets/Night2.jpg'
 import imperialUltra1 from '../assets/imperialUltra1.png'
+import imperialUltra from '../assets/imperial Ultra.jpg'
 import queen from '../assets/queen1.png'
+import beer from '../assets/beer.png'
 import { useNavigate } from 'react-router';
 
 const LiquorHomepage = () => {
@@ -23,20 +25,20 @@ const LiquorHomepage = () => {
       subtitle: "When Nights Deserve a Legacy"
     },
     {
-      image: legacy,
-      title: "Royal Legacy Single Malt",
-      subtitle: "One Malt. A Thousand Stories"
+      image: beer,
+      title: "Bold Brew",
+      subtitle: "The King of Bold Brews."
     },
     {
-      image: imperialUltra1,
+      image: imperialUltra,
       title: "Imperial Ultra Whisky",
       subtitle: "Raise the Bar. Every Time"
     },
-    {
-      image: queen,
-      title: "Queen Special Scotch",
-      subtitle: "The Elegance of Power"
-    }
+    // {
+    //   image: queen,
+    //   title: "Queen Special Scotch",
+    //   subtitle: "The Elegance of Power"
+    // }
   ];
 
   React.useEffect(() => {
@@ -86,7 +88,7 @@ const LiquorHomepage = () => {
   ];
 
   return (
-    <div className="bg-[#951049] min-h-screen">
+    <div className="bg-[#951049] min-h-screen mt-20">
       {/* Hero Slider Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Slider Images */}
@@ -102,7 +104,7 @@ const LiquorHomepage = () => {
               alt={slide.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#951049]/70 via-[#951049]/50 to-[#951049]"></div>
+            <div className="absolute inset-0 bg-[#95104a5f]"></div>
           </div>
         ))}
 
@@ -327,7 +329,7 @@ const LiquorHomepage = () => {
           <div className="text-center mt-12">
             <button 
               onClick={() => window.location.href = '/products'}
-              className="bg-[#FFD700] text-[#951049] px-12 py-4 rounded-full font-bold text-lg uppercase tracking-wide hover:bg-[#FFC700] transition-all transform hover:scale-105 shadow-xl hover:shadow-[#FFD700]/30"
+              className="bg-[#FFD700] cursor-pointer text-[#951049] px-12 py-4 rounded-full font-bold text-lg uppercase tracking-wide hover:bg-[#FFC700] transition-all transform hover:scale-105 shadow-xl hover:shadow-[#FFD700]/30"
             >
               Show More Products
             </button>

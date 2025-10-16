@@ -56,7 +56,7 @@ const Header = () => {
   };
 
   return (
-  <nav className="flex items-center justify-between px-6 py-4 bg-[#95104a85] fixed top-0 w-full z-50 text-yellow-200">
+  <nav className="flex items-center justify-between px-6 py-4 bg-[#95104a] fixed top-0 w-full z-50 text-yellow-200">
     {/* Logo Section - hidden on mobile if menuOpen */}
     <Link
       to="/"
