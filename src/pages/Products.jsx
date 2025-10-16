@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import night from '../assets/Night2.jpg'
-import imperialUltra from '../assets/Imperial Ultra.jpg'
 import imperialUltra1 from '../assets/imperialUltra1.png'
 import queen from '../assets/queen1.png'
 import lemon from '../assets/lemon.png'
