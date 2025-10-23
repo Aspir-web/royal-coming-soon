@@ -24,10 +24,14 @@ const Footer = () => {
           <div>
             <h4 className="text-[#FFD700] font-semibold mb-4 uppercase tracking-wide">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-[#FFD700] transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-[#FFD700] transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-[#FFD700] transition-colors">Age Verification</a></li>
-              <li><a href="#" className="hover:text-[#FFD700] transition-colors">Responsible Drinking</a></li>
+              <li><a href="/distribution" className="hover:text-[#FFD700] transition-colors">Authorised Distribution</a></li>
+              <li><a href="/business-collaboration" className="hover:text-[#FFD700] transition-colors">Business Collaboration</a></li>
+              <li><a href="/tin" className="hover:text-[#FFD700] transition-colors">TIN Document</a></li>
+              <li><a href="/tax" className="hover:text-[#FFD700] transition-colors">Commercial Tax</a></li>
+              <li><a href="/udyam" className="hover:text-[#FFD700] transition-colors">UDYAM Registration</a></li>
+              <li><a href="/registration" className="hover:text-[#FFD700] transition-colors">Registration Documents</a></li>
+              <li><a href="/khoday" className="hover:text-[#FFD700] transition-colors">KHODAY INDIA LIMITED Sales Documents</a></li>
+              <li><a href="/blendwell" className="hover:text-[#FFD700] transition-colors">BLENDWELL BOTTLERS PVT.LTD Documents</a></li>
             </ul>
           </div>
 
