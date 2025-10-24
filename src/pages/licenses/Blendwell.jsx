@@ -6,6 +6,8 @@ import img3 from '../../assets/licenses/blendwell/bw3.jpg'
 import img4 from '../../assets/licenses/blendwell/bw4.jpg'
 import img5 from '../../assets/licenses/blendwell/bw5.jpg'
 import img6 from '../../assets/licenses/blendwell/bw6.jpg'
+import img7 from '../../assets/licenses/blendwell/bw7.jpg'
+import img8 from '../../assets/licenses/blendwell/bw8.jpg'
 
 const Blendwell = () => {
   return (
@@ -39,6 +41,8 @@ const Blendwell = () => {
         <img src={img4} className='m-auto px-5' />
         <img src={img5} className='m-auto px-5' />
         <img src={img6} className='m-auto px-5' />
+        <img src={img7} className='m-auto px-5' />
+        <img src={img8} className='m-auto px-5' />
       </div>
     </>
   )
