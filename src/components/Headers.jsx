@@ -93,13 +93,13 @@ const Header = () => {
       >
         <h1>Home</h1>
       </Link>
-    { /* <Link
-        to="/about"
+     <Link
+        to="/aboutus"
         className="block px-3 py-2 hover:opacity-90 transition-all duration-200"
         onClick={closeAllMenus}
       >
-        <h1>About</h1>
-      </Link> */}
+        <h1>About Us</h1>
+      </Link> 
       <Link
         to="/products"
         className="block px-3 py-2 hover:opacity-90 transition-all duration-200"
@@ -114,13 +114,13 @@ const Header = () => {
       >
         <h1>Investment</h1>
       </Link> */}
-      <Link
+      {/* <Link
         to="#"
         className="block px-3 py-2 hover:opacity-90 transition-all duration-200"
         onClick={closeAllMenus}
       >
        <h1>Contact Us</h1> 
-      </Link>
+      </Link> */}
     </div>
   </nav>
 );

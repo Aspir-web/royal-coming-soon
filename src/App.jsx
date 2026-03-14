@@ -12,6 +12,7 @@ import UDYAM from './pages/licenses/UDYAM'
 import Registration from './pages/licenses/Registration'
 import Khoday from './pages/licenses/KhodayIndia'
 import Blendwell from './pages/licenses/Blendwell'
+import AboutUs from './pages/Aboutus'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path='/registration' element={<Registration/>}/>
       <Route path='/khoday' element={<Khoday/>}/>
       <Route path='/blendwell' element={<Blendwell/>}/>
+      <Route path='/aboutus' element={<AboutUs/>}/>
     </Routes>
     <Footer/>
     </>
