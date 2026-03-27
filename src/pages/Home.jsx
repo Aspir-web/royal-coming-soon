@@ -200,14 +200,15 @@ const LiquorHomepage = () => {
                     Mr. Shubham Kumar
                   </span>
                   , who brings fresh energy and strategic innovation to carry
-                  the legacy forward. Supporting the leadership team is{" "}
+                  the legacy forward. 
+                  {/* Supporting the leadership team is{" "}
                   <span className="text-[#FFD700] font-bold">Ms. Ishika</span>,
                   serving as{" "}
                   <span className="text-[#FFD700] font-bold">
                     Associate Business Partner
                   </span>
                   , contributing with dedication and strategic support in
-                  driving the company’s continued growth.
+                  driving the company’s continued growth. */}
                 </p>
               </div>
 
